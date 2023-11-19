@@ -102,7 +102,7 @@ func (guild *Guild) LoadFromPath(path string, Err *log.Logger) error {
 		if record[10] == "on" {
 			trophyTributeStatus = true
 		}
-		donations, err := strconv.Atoi(record[11])
+		donations, err := strconv.Atoi(strings.Replace(record[11], ",", "", -1))
 		if err != nil {
 			Err.Printf("Error converting donations to int - Donation: %s Name: %s\n", record[11], record[0])
 			continue
